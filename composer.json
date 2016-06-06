@@ -1,0 +1,34 @@
+{
+    "name": "vault/programming-test",
+    "description": "Vault Innovation Programming Test",
+    "keywords": ["programming", "test"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vault\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/UnitTestCase.php"
+        ]
+    },
+    "scripts": {
+        "pre-update-cmd": [
+            "composer dump-autoload -o"
+        ],
+        "post-update-cmd": [
+            "composer dump-autoload -o"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
