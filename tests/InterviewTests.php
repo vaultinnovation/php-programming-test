@@ -1,5 +1,6 @@
 <?php
-
+namespace Vault;
+require_once '../src/Vault/koInterviewAnswers.php';
 /**
  * Instructions:
  *
