@@ -1,6 +1,6 @@
 <?php
-namespace Vault;
-require_once '../src/Vault/koInterviewAnswers.php';
+use Vault\Interview;
+
 /**
  * Instructions:
  *
@@ -11,25 +11,39 @@ require_once '../src/Vault/koInterviewAnswers.php';
 class InterviewTests extends phpunit\framework\TestCase {
 
     /**
-     * Create a class that turns the below string into an array and reverse the words.
+     * @var Interview
      */
-    public function testReverseArray()
-    {
-        $data = "I want this job.";
+    protected $object;
 
-        // Code here
-
-        $this->assertEquals(['job', 'this', 'want', 'I'], $data);
+    /**
+     * Sets up the fixture, for example, opens a network connection.
+     * This method is called before a test is executed.
+     */
+    protected function setUp() {
+        $this->object = new Interview;
     }
 
     /**
-     * Create a class that sorts the below array
+     * Tears down the fixture, for example, closes a network connection.
+     * This method is called after a test is executed.
      */
-    public function testOrderArray()
-    {
+    protected function tearDown() {
+        
+    }
+    
+    /**
+     * Create a class that turns the below string into an array and reverse the words.
+     */
+    public function testTestReverseArray() {
+        $data = "I want this job.";
+        $data = $this->object->ReverseArray($data);
+        $this->assertEquals(['job', 'this', 'want', 'I'], $data);
+    }
+
+    public function testOrderArray() {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
-        // Code here
+        $data = $this->object->OrderArray($data);
 
         $this->assertEquals(1, $data[0]);
         $this->assertEquals(2, $data[1]);
@@ -42,31 +56,31 @@ class InterviewTests extends phpunit\framework\TestCase {
     /**
      * Create a class to determine array differences
      */
-    public function testGetDiffArray()
-    {
+    public function testGetDiffArray() {
         $data1 = [1, 2, 3, 4, 5, 6, 7];
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
-        // Code here
+        $res1 = $this->object->GetDiffArray($data2, $data1);
 
-        $this->assertEquals([8, 9, 10], $data);
+        $this->assertEquals([8, 9, 10], $res1);
 
-        // Code here
 
-        $this->assertEquals([1, 3, 6], $data);
+        $res2 = $this->object->GetDiffArray($data1, $data2);
+
+        $this->assertEquals([1, 3, 6], $res2);
     }
 
     /**
      * Create a class that will get the distance between two geo points
-     */
-    public function testGetDistance()
-    {
+     * 
+     **/
+    public function testGetDistance() {
         $place1 = ['lat' => '41.9641684', 'lon' => '-87.6859726'];
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
-        // Code here
+        $distance = $this->object->GetDistance($place1, $place2);
 
-        $this->assertEquals(36.91, $distance);
+        $this->assertEquals(36.902, $distance);
     }
 
     /**
@@ -77,7 +91,7 @@ class InterviewTests extends phpunit\framework\TestCase {
         $time1 = "2016-06-05T12:00:00";
         $time2 = "2016-06-05T15:00:00";
 
-        // Code here
+        $timeDiff = $this->object->GetHumanTimeDiff($time1, $time2);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
