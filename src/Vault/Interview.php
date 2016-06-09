@@ -1,4 +1,5 @@
-<?php
+<?php 
+namespace Vault;
 
 /*
  * Code created by Kevin O'Riley -> for Vault Innovations
@@ -6,7 +7,7 @@
  * This class is to show aptitude, in php/phpUnit/git/gitHub
  */
 
-namespace Vault;
+
 
 class Interview {
 
