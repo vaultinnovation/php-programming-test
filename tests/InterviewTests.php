@@ -36,6 +36,11 @@ class InterviewTests extends phpunit\framework\TestCase {
         $this->assertEquals(200, $data[3]);
         $this->assertEquals(450, $data[4]);
         $this->assertEquals(505.5, $data[5]);
+
+        foreach($data as $number)
+        {
+            $this->assertTrue((int)$number === $number);
+        }
     }
 
     /**
