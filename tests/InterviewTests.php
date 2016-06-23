@@ -18,6 +18,7 @@ class InterviewTests extends phpunit\framework\TestCase {
     {
         $data = "I want this job.";
 
+        // Code here
         $data = InterviewAnswers::reverseWords($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
@@ -30,7 +31,8 @@ class InterviewTests extends phpunit\framework\TestCase {
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
-        $data = InterviewAnswers::sortArray($data);
+        // Code here
+        $data = InterviewAnswers::orderArray($data);
 
         $this->assertEquals(1, $data[0]);
         $this->assertEquals(2, $data[1]);
@@ -62,10 +64,12 @@ class InterviewTests extends phpunit\framework\TestCase {
 
         $data = InterviewAnswers::diffArrays($data2, $data1);
 
+        // Code here
         $this->assertEquals([8, 9, 10], $data);
 
         $data = InterviewAnswers::diffArrays($data1, $data2);
 
+        // Code here
         $this->assertEquals([1, 3, 6], $data);
     }
 
@@ -80,7 +84,7 @@ class InterviewTests extends phpunit\framework\TestCase {
         // Code here
         $distance = InterviewAnswers::getDistance($place1, $place2);
 
-        // Convert meters to miles, fudge some rounding to pass test
+        // Convert meters to miles, round to pass test
         $distance = round($distance * 0.001 * 0.6214, 2);
 
         // Note that I'd prefer a test with a minimum delta instead here
