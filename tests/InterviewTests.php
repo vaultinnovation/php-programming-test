@@ -7,6 +7,8 @@
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
 
+use \Vault\Vault\InterviewAnswers;
+
 class InterviewTests extends phpunit\framework\TestCase {
 
     /**
@@ -17,6 +19,7 @@ class InterviewTests extends phpunit\framework\TestCase {
         $data = "I want this job.";
 
         // Code here
+        $data = InterviewAnswers::reverseWords($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -29,6 +32,7 @@ class InterviewTests extends phpunit\framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+        $data = InterviewAnswers::orderArray($data);
 
         $this->assertEquals(1, $data[0]);
         $this->assertEquals(2, $data[1]);
@@ -58,12 +62,14 @@ class InterviewTests extends phpunit\framework\TestCase {
         $data1 = [1, 2, 3, 4, 5, 6, 7];
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
-        // Code here
+        $data = InterviewAnswers::diffArrays($data2, $data1);
 
+        // Code here
         $this->assertEquals([8, 9, 10], $data);
 
-        // Code here
+        $data = InterviewAnswers::diffArrays($data1, $data2);
 
+        // Code here
         $this->assertEquals([1, 3, 6], $data);
     }
 
@@ -76,7 +82,13 @@ class InterviewTests extends phpunit\framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+        $distance = InterviewAnswers::getDistance($place1, $place2);
 
+        // Convert meters to miles, round to pass test
+        $distance = round($distance * 0.001 * 0.6214, 2);
+
+        // Note that I'd prefer a test with a minimum delta instead here
+        // e.g. $this->assertEquals(36.91, $distance, null, 0.01)
         $this->assertEquals(36.91, $distance);
     }
 
@@ -88,9 +100,40 @@ class InterviewTests extends phpunit\framework\TestCase {
         $time1 = "2016-06-05T12:00:00";
         $time2 = "2016-06-05T15:00:00";
 
-        // Code here
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
 
+    /*
+    public function testGetHumanTimeDiffFuture()
+    {
+        $time1 = "2016-06-05T17:00:00";
+        $time2 = "2016-06-05T15:00:00";
+
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
+
+        $this->assertEquals("2 hours from now", $timeDiff);
+    }
+
+    public function testGetHumanTimeDiffYear()
+    {
+        $time1 = "2015-06-05T12:00:00";
+        $time2 = "2016-06-05T15:00:00";
+
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
+
+        $this->assertEquals("1 year and 3 hours ago", $timeDiff);
+    }
+
+    public function testGetHumanTimeDiffMonthYear()
+    {
+        $time1 = "2015-06-05T12:00:00";
+        $time2 = "2016-07-05T15:00:00";
+
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
+
+        $this->assertEquals("1 year, 1 month, and 3 hours ago", $timeDiff);
+    }
+    */
 }
