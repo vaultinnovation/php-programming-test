@@ -96,9 +96,40 @@ class InterviewTests extends phpunit\framework\TestCase {
         $time1 = "2016-06-05T12:00:00";
         $time2 = "2016-06-05T15:00:00";
 
-        // Code here
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
 
+    /*
+    public function testGetHumanTimeDiffFuture()
+    {
+        $time1 = "2016-06-05T17:00:00";
+        $time2 = "2016-06-05T15:00:00";
+
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
+
+        $this->assertEquals("2 hours from now", $timeDiff);
+    }
+
+    public function testGetHumanTimeDiffYear()
+    {
+        $time1 = "2015-06-05T12:00:00";
+        $time2 = "2016-06-05T15:00:00";
+
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
+
+        $this->assertEquals("1 year and 3 hours ago", $timeDiff);
+    }
+
+    public function testGetHumanTimeDiffMonthYear()
+    {
+        $time1 = "2015-06-05T12:00:00";
+        $time2 = "2016-07-05T15:00:00";
+
+        $timeDiff = InterviewAnswers::getHumanTimeDiff($time1, $time2);
+
+        $this->assertEquals("1 year, 1 month, and 3 hours ago", $timeDiff);
+    }
+    */
 }
