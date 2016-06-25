@@ -19,7 +19,8 @@ class InterviewTests extends phpunit\framework\TestCase {
         $data = "I want this job.";
 
         // Code here
-		$data = Vault\TestSolutions::reverseArray($data);
+		$solver = new TestSolutions();
+		$data = $solver->reverseArray($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -32,7 +33,8 @@ class InterviewTests extends phpunit\framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
-		$data = Vault\TestSolutions::orderArray($data);
+		$solver = new TestSolutions();
+		$data = $solver->orderArray($data);
 
         $this->assertEquals(1, $data[0]);
         $this->assertEquals(2, $data[1]);
@@ -63,12 +65,13 @@ class InterviewTests extends phpunit\framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
-		$data = Vault\TestSolutions::getDiffArray($data2,$data1);
+		$solver = new TestSolutions();
+		$data = $solver->getDiffArray($data2,$data1);
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
-		$data = Vault\TestSolutions::getDiffArray($data1,$data2);
+		$data = $solver->getDiffArray($data1,$data2);
 
         $this->assertEquals([1, 3, 6], $data);
     }
@@ -82,7 +85,8 @@ class InterviewTests extends phpunit\framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
-		$distance = Vault\TestSolutions::getDistance($place1,$place2);
+		$solver = new TestSolutions();
+		$distance = $solver->getDistance($place1,$place2);
 
         $this->assertEquals(36.91, $distance);
     }
@@ -97,7 +101,8 @@ class InterviewTests extends phpunit\framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
-		$timeDiff = Vault\TestSolutions::getHumanTimeDiff($time2,$time1);
+		$solver = new TestSolutions();
+		$timeDiff = $solver->getHumanTimeDiff($time2,$time1);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
