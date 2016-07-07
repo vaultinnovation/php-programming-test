@@ -7,7 +7,7 @@
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
 
-class InterviewTests extends phpunit\framework\TestCase {
+class InterviewTests extends PHPUnit\Framework\TestCase {
 
     /**
      * Create a class that turns the below string into an array and reverse the words.
