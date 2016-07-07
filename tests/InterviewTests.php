@@ -30,24 +30,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
 
         // Code here
 
-        $this->assertEquals(1, $data[0]);
-        $this->assertEquals(2, $data[1]);
-        $this->assertEquals(2.5, $data[2]);
-        $this->assertEquals(200, $data[3]);
-        $this->assertEquals(450, $data[4]);
-        $this->assertEquals(505.5, $data[5]);
-
-        foreach($data as $number)
-        {
-            if(is_int($number)) {
-                $this->assertTrue((int)$number === $number);
-            }
-
-            if(is_float($number)) {
-                $this->assertTrue((float)$number === $number);
-            }
-
-        }
+        $this->assertTrue(1 === $data[0]);
+        $this->assertTrue(2 === $data[1]);
+        $this->assertTrue(2.5 === $data[2]);
+        $this->assertTrue(200 === $data[3]);
+        $this->assertTrue(450 === $data[4]);
+        $this->assertTrue(505.5 === $data[5]);
     }
 
     /**
