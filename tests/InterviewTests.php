@@ -6,6 +6,8 @@
  * Create a class in the Vault namespace and rewrite each test to make the assertions pass.
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
+ require "../vendor/autoload.php";
+ use Vault\TestSolutions;
 
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
@@ -17,6 +19,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = "I want this job.";
 
         // Code here
+		$solver = new TestSolutions();
+		$data = $solver->reverseArray($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -29,6 +33,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+		$solver = new TestSolutions();
+		$data = $solver->orderArray($data);
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -47,10 +53,13 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+		$solver = new TestSolutions();
+		$data = $solver->getDiffArray($data2,$data1);
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
+		$data = $solver->getDiffArray($data1,$data2);
 
         $this->assertEquals([1, 3, 6], $data);
     }
@@ -64,6 +73,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+		$solver = new TestSolutions();
+		$distance = $solver->getDistance($place1,$place2);
 
         $this->assertEquals(36.91, $distance);
     }
@@ -71,12 +82,15 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     /**
      * Create a class that will generate a human readable time difference
      */
+	 
     public function testGetHumanTimeDiff()
     {
         $time1 = "2016-06-05T12:00:00";
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
+		$solver = new TestSolutions();
+		$timeDiff = $solver->getHumanTimeDiff($time2,$time1);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
