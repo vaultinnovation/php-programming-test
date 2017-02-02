@@ -132,7 +132,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
 	{
 		for($i = 0; $i < $sort.count; $i++)
 		{
-			for ($j = $i; $j + 1 < $sort.count; $j++)
+			for ($j = 0; $j + 1 < $sort.count - $i; $j++)
 			{
 				if($sort[$j] > $sort[$j + 1])
 				{
