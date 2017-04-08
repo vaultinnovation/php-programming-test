@@ -1,4 +1,5 @@
 <?php
+use Vault\Vault\NumericOrder;
 
 /**
  * Instructions:
@@ -17,6 +18,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = "I want this job.";
 
         // Code here
+        $reverse = new \Vault\Vault\StringReverse;
+        $data = $reverse->reverse($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -29,6 +32,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+        $sort = new NumericOrder;
+        $data = $sort->sort($data);
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -47,10 +52,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+        $data = (new \Vault\Vault\ArrayDifference($data2, $data1))->diff();
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
+        $data = (new \Vault\Vault\ArrayDifference($data1, $data2))->diff();
 
         $this->assertEquals([1, 3, 6], $data);
     }
@@ -64,6 +71,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+        $math = new \Vault\Vault\GeoDistance($place1, $place2);
+        $distance = $math->haversine();
 
         $this->assertEquals(36.91, $distance);
     }
@@ -77,6 +86,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
+        $timeDiff = (new Vault\Vault\TimeDifference($time1, $time2))->diff();
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
