@@ -68,6 +68,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+        $distance = Vault\TestAnswers::getGreatCircleDistance($place1, $place2);
 
         $this->assertEquals(36.91, $distance);
     }
