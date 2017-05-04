@@ -31,6 +31,18 @@ class TestAnswers
     sort($data, SORT_NUMERIC);
     return $data;
   }
+
+  public static function getDiffArray(array $array1, array $array2): array
+  {
+    // find values in array1 that are not in array2 using set operations
+    $array1Set = new \Ds\Set($array1);
+    $array2Set = new \Ds\Set($array2);
+    $differences = $array1Set->diff($array2Set);
+    // convert differences to array, sort, and return
+    $differencesArray = $differences->toArray();
+    sort($differencesArray, SORT_NUMERIC);
+    return $differencesArray;
+  }
 }
 
 ?>
