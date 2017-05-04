@@ -43,6 +43,16 @@ class TestAnswers
     sort($differencesArray, SORT_NUMERIC);
     return $differencesArray;
   }
+
+  public static function getHumanTimeDiff(string $time1, string $time2): string
+  {
+    // calculate time difference
+    $datetime1 = new \DateTime($time1);
+    $datetime2 = new \DateTime($time2);
+    $interval = $datetime1->diff($datetime2);
+    // output in human readable format
+    return $interval->format("%h hours ago");
+  }
 }
 
 ?>
