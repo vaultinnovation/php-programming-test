@@ -4,7 +4,7 @@
  * Instructions:
  *
  * Create a class in the Vault namespace and rewrite each test to make the assertions pass.
- * NOTE: You can use any third party packages you deem necessary to complete the tests. 
+ * NOTE: You can use any third party packages you deem necessary to complete the tests.
  */
 
 class InterviewTests extends PHPUnit\Framework\TestCase {
