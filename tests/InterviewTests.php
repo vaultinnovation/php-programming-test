@@ -17,6 +17,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = "I want this job.";
 
         // Code here
+		$pieces = explode(" ", $pizza);
+		$data = array_reverse($pieces);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -29,7 +31,20 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+		
+		class Arrays {
+			public function sortArray($arr)
+			{
+				$newarray = sort($arr);
+				
+				return $newarray;
+			}
+		}
 
+		$arraysObj = new Arrays; 
+
+		$data = $arraysObj->sortArray($data);
+		
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
         $this->assertTrue(2.5 === $data[2]);
@@ -37,6 +52,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $this->assertTrue(450 === $data[4]);
         $this->assertTrue(505.5 === $data[5]);
     }
+	
+	
 
     /**
      * Create a class to determine array differences
@@ -47,10 +64,35 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+		class Arrays {
+			public function getDifferences($arr1, $arr2)
+			{
+				$found = False;
+				$foundArray = [];
+				foreach ($arr1 as &$value1) {
+					foreach ($arr2 as &$value2) {
+						if ($value1 == $value2) {
+							$found = True;
+						}
+					}
+					if ($found == True){
+						array_push($foundArray,$value1);
+					}
+				}
+				
+				return $foundArray;
+			}
+		}
+		
+		$arraysObj = new Arrays; 
+
+		$data = $arraysObj->getDifferences($data2, $data1);
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
+		
+		$data = $arraysObj->getDifferences($data1, $data2);
 
         $this->assertEquals([1, 3, 6], $data);
     }
@@ -64,6 +106,23 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+		class Distance {
+			public function getDistance($cord1, $cord2)
+			{
+				
+				$lat1 = $cord1['lat']
+				$lon1 = $cord1['lon']
+				$lat2 = $cord2['lat']
+				$lon2 = $cord2['lon']
+
+				$radius = M_PI / 180;
+				return acos(sin($lat2*$radius) * sin($lat1*$radius) + cos($lat2*$radius) * cos($lat1*$radius) * cos($lon2*$radius - $lon1*$radius)) * 6371;// Kilometers
+
+			}
+		}
+		
+		$distanceObj = new Distance; 
+		$distance = $distanceObj->getDistance($place1, $place2);
 
         $this->assertEquals(36.91, $distance);
     }
@@ -77,7 +136,17 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
-
+		class Time {
+			public function getTimeDifference($tim1, $tim2)
+			{
+				$to_time = strtotime($tim1);
+				$from_time = strtotime($tim2);
+				return round(abs($to_time - $from_time),2). " hours ago";
+			}
+		}
+		$timeObj = new Time; 
+		$timeDiff = $timeObj->getTimeDifference($time1, $time2);
+		
         $this->assertEquals("3 hours ago", $timeDiff);
     }
 
