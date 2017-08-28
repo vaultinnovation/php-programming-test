@@ -4,7 +4,8 @@
  * Instructions:
  *
  * Create a class in the Vault namespace and rewrite each test to make the assertions pass.
- * NOTE: You can use any third party packages you deem necessary to complete the tests. 
+ * NOTE: You can use any third party packages you deem necessary to complete the tests.
+ *
  */
 
 class InterviewTests extends PHPUnit\Framework\TestCase {
@@ -12,11 +13,20 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     /**
      * Create a class that turns the below string into an array and reverse the words.
      */
+    private $testClass;
+
+    public function __construct($name = null, array $data = [], $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->testClass = new TestClass();
+    }
+
     public function testReverseArray()
     {
         $data = "I want this job.";
 
         // Code here
+        $data = $this->testClass->reverseArray($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -29,6 +39,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+        $data = $this->testClass->orderArray($data);
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -47,11 +58,11 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
-
+        $data = $this->testClass->getDiffArray($data1, $data2);
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
-
+        $data = $this->testClass->getDiffArray($data2, $data1);
         $this->assertEquals([1, 3, 6], $data);
     }
 
@@ -64,6 +75,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+        $distance = $this->testClass->getDistance($place1, $place2);
 
         $this->assertEquals(36.91, $distance);
     }
@@ -77,7 +89,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
-
+        $timeDiff = $this->testClass->getHumanTimeDiff($time1, $time2);
         $this->assertEquals("3 hours ago", $timeDiff);
     }
 
