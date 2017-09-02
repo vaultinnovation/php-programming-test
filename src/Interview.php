@@ -15,5 +15,18 @@ class Interview {
     return $reverse;
   }
 
+  public function orderArray(&$array)
+  {
+    if($array != NULL){
 
+      //Converting strings to number types
+      foreach ($array as &$thing) {
+        $thing = $thing + 0;
+      }
+
+
+    }
+
+    return    sort($array);
+  }
 }

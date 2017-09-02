@@ -35,7 +35,10 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
-        // Code here
+
+        $interview = new Interview();
+
+        $interview->orderArray($data);
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -54,10 +57,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+        $data =array_diff($data1,$data2);
 
         $this->assertEquals([8, 9, 10], $data);
 
-        // Code here
+        //No class needed using
+        $data =array_diff($data1,$data2);
 
         $this->assertEquals([1, 3, 6], $data);
     }
