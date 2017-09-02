@@ -56,13 +56,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data1 = [1, 2, 3, 4, 5, 6, 7];
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
-        // Code here
-        $data =array_diff($data1,$data2);
+        $data =array_values(array_diff($data2,$data1));
 
         $this->assertEquals([8, 9, 10], $data);
 
-        //No class needed using
-        $data =array_diff($data1,$data2);
+        //No class needed using builtin functions, array_values to get zero index.
+        $data =array_values(array_diff($data1,$data2));
 
         $this->assertEquals([1, 3, 6], $data);
     }
