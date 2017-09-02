@@ -4,8 +4,13 @@
  * Instructions:
  *
  * Create a class in the Vault namespace and rewrite each test to make the assertions pass.
- * NOTE: You can use any third party packages you deem necessary to complete the tests. 
+ * NOTE: You can use any third party packages you deem necessary to complete the tests.
  */
+
+// Path is /Users/danieljbrieckjr/Development_Programing/php-programming-test
+// require_once(dirname(dirname(__FILE__)) . "/src/Interview.php");
+
+use Vault\Interview;
 
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
@@ -16,7 +21,9 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data = "I want this job.";
 
-        // Code here
+        $interview = new Interview();
+
+        $data = $interview->reverseArray($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
