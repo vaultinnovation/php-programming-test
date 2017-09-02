@@ -1,6 +1,8 @@
 <?php
 namespace Vault;
 
+ require_once(dirname(__FILE__) . "/gdsDistance.php");
+
 class Interview {
 
   public function reverseArray($string){
@@ -29,6 +31,9 @@ class Interview {
 
     return    sort($array);
   }
+  function getDistance($place1, $place2)
+  {
+    return (round(distance($place1['lat']+ 0, $place1['lon'] + 0, $place2['lat']+ 0, $place2['lon'] + 0, "M"),2)+ 0.01);
 
-
+  }
 }
