@@ -87,7 +87,10 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time1 = "2016-06-05T12:00:00";
         $time2 = "2016-06-05T15:00:00";
 
-        // Code here
+        $interview = new Interview();
+
+        $timeDiff = $interview->getHumanTimeDiff($time1,$time2);
+
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }

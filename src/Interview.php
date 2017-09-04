@@ -1,7 +1,9 @@
 <?php
 namespace Vault;
 
- require_once(dirname(__FILE__) . "/gdsDistance.php");
+require_once(dirname(__FILE__) . "/gdsDistance.php");
+
+require_once(dirname(__FILE__). "/timeago.php");
 
 class Interview {
 
@@ -17,8 +19,7 @@ class Interview {
     return $reverse;
   }
 
-  public function orderArray(&$array)
-  {
+  public function orderArray(&$array){
     if($array != NULL){
 
       //Converting strings to number types
@@ -31,9 +32,20 @@ class Interview {
 
     return    sort($array);
   }
-  function getDistance($place1, $place2)
-  {
+
+  function getDistance($place1, $place2){
     return (round(distance($place1['lat']+ 0, $place1['lon'] + 0, $place2['lat']+ 0, $place2['lon'] + 0, "M"),2)+ 0.01);
 
   }
+
+  public function getHumanTimeDiff($time1,$time2){
+
+    $epoc1 = strtotime($time1);
+    $epoc2 = strtotime($time2);
+
+    return time_ago($epoc1, $epoc2);
+
+
+  }
+
 }
