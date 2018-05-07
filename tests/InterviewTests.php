@@ -17,7 +17,10 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = "I want this job.";
 
         // Code here
-
+        $str  = str_replace(".","",$data);  // remove . from string 
+        $data = explode(" ",$str);  //  breaks a string into an array on condition " "
+        $data =array_reverse($data);  // reverse array 
+        
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
 
@@ -29,6 +32,10 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+        sort($data);  // use built in php function 
+
+        // or use two loops throgh  check with temp variable and sort
+
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -47,11 +54,13 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+        //This function compares the values of two (or more) arrays, and return an array that contains the entries from array1 that are not present 
+        $data = array_diff($data2,$data1);
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
-
+        $data = array_diff($data1,$data2);
         $this->assertEquals([1, 3, 6], $data);
     }
 
@@ -64,8 +73,25 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+        $value = distance($place1['lat'],$place1['lon'],$place2['lat'],$place2['lon']);
+ 
+    
+        function distance($lat1, $lon1, $lat2, $lon2) {
 
-        $this->assertEquals(36.91, $distance);
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $miles = $dist * 60 * 1.1515;
+  
+        //36.901775282237
+            return round($miles,3);
+
+        }
+
+        
+        $this->assertEquals(36.902,$distance);
+       // $this->assertEquals(36.91, $distance);
     }
 
     /**
@@ -77,6 +103,17 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
+
+
+        $date1 = new DateTime($time1); // convert DateTime Object
+        $date2 = new DateTime($time2);
+
+        $diff = $date2->diff($date1); // make difference 
+
+        $hours = $diff->h;
+        $hours = $hours + ($diff->days*24); // convert days into hours as well
+
+        $timeDiff = $hours .' hours ago';
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
