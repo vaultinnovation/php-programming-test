@@ -40,7 +40,7 @@ class Sort {
 			return $number; 
 		}, $data);  // make all the values a float or int
 
-		sort($data); // do a natural case sort on the array
+		sort($data); // sort the array
 	
 		return  $data;  // return sorted array
 	}
@@ -72,14 +72,14 @@ class Difference {
 }
 
 
-// class for testing function testGetDiffArray() in InterviewTest.php
+// class for testing function testGetDistance() in InterviewTest.php
 class Distance {
 
 	/**
 	 * Function to get the difference between time strings
-	 * @param string $time1
-	 * @param string $time2
-	 * @return time diff string in hours 
+	 * @param array $place1
+	 * @param array $place2
+	 * @return int distance in miles 
 	 */
 	public static function distance(array $place1, array $place2): float  {
 		
@@ -103,7 +103,7 @@ class Distance {
 }
 
 
-// class for testing function testGetDiffArray() in InterviewTest.php
+// class for testing function testGetHumanTimeDiff() in InterviewTest.php
 class TimeDifference {
 
 	/**
