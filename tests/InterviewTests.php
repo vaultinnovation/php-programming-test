@@ -19,14 +19,6 @@ class InterviewTests extends \PHPUnit\Framework\TestCase {
     {
         $interview = new Interview;
 
-        $data = null;
-        $data = $interview->reverseArray($data);
-        $this->assertEquals(null, $data);
-
-        $data = 1;
-        $data = $interview->reverseArray($data);
-        $this->assertEquals(null, $data);
-
         $data = "";
         $data = $interview->reverseArray($data);
         $this->assertEquals([""], $data);
@@ -55,10 +47,6 @@ class InterviewTests extends \PHPUnit\Framework\TestCase {
     public function testOrderArray()
     {
         $interview = new Interview;
-
-        $data = null;
-        $interview->orderArray($data);
-        $this->assertTrue(null === $data);
 
         $data = [];
         $interview->orderArray($data);
@@ -90,15 +78,6 @@ class InterviewTests extends \PHPUnit\Framework\TestCase {
         $interview = new Interview;
         $data1 = [1, 2, 3, 4, 5, 6, 7];
         $data2 = [2, 4, 5, 7, 8, 9, 10];
-
-        $data = $interview->getDiffArray(null, null);
-        $this->assertEquals(null, $data);
-
-        $data = $interview->getDiffArray($data1, null);
-        $this->assertEquals(null, $data);
-
-        $data = $interview->getDiffArray("a string", $data2);
-        $this->assertEquals(null, $data);
 
         $data = $interview->getDiffArray([], []);
         $this->assertEquals([], $data);
@@ -138,11 +117,6 @@ class InterviewTests extends \PHPUnit\Framework\TestCase {
 
         $time1 = "";
         $time2 = "2016-06-05T15:00:00";
-        $timeDiff = $interview->getHumanTimeDiff($time1, $time2);
-        $this->assertEquals(null, $timeDiff);
-
-        $time1 = "2016-06-05T12:00:00";
-        $time2 = null;
         $timeDiff = $interview->getHumanTimeDiff($time1, $time2);
         $this->assertEquals(null, $timeDiff);
 

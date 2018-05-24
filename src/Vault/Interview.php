@@ -12,53 +12,42 @@ namespace Vault\Vault;
 
 class Interview {
 
-    public function reverseArray($string)
+    public function reverseArray(string $string)
     {
-        if ( is_string($string) ) {
-            $result = preg_replace(
-                '/[^a-zA-Z0-9\s]+|[\f\n\r\t\v]+|' .
-                '[\x{00a0}\x{1680}\x{180e}\x{2000}-\x{200a}\x{2028}\x{2029}\x{202f}\x{205f}\x{3000}\x{feff}]/ui',
-                "", $string
-            );
-            return array_reverse(explode(' ', $result), false);
-        }
-        return null;
+        $result = preg_replace(
+            '/[^a-zA-Z0-9\s]+|[\f\n\r\t\v]+|' .
+            '[\x{00a0}\x{1680}\x{180e}\x{2000}-\x{200a}\x{2028}\x{2029}\x{202f}\x{205f}\x{3000}\x{feff}]/ui',
+            "", $string
+        );
+        return array_reverse(explode(' ', $result), false);
     }
 
 
-    public function orderArray($array)
+    public function orderArray(array $array)
     {
         $temp = [];
-        if ( is_array($array) )
+        foreach ($array as $key => $value )
         {
-            foreach ($array as $key => $value )
-            {
-                if ( preg_match('/\d+\.\d+|\d+/', $value) ) {
-                    $temp[$key] = $value + 0;
-                } else {
-                    break;
-                }
+            if ( preg_match('/\d+\.\d+|\d+/', $value) ) {
+                $temp[$key] = $value + 0;
+            } else {
+                break;
             }
-            if ( count($temp) === count($array) ) {
-                sort( $temp );
-                return $temp;
-            }
-            return $array;
         }
-        return null;
+        if ( count($temp) === count($array) ) {
+            sort( $temp );
+            return $temp;
+        }
+        return $array;
     }
 
-
-    public function getDiffArray($compareFrom, $compareAgaisnt)
+    public function getDiffArray(array $compareFrom, array $compareAgaisnt)
     {
-        if ( is_array($compareFrom) && is_array($compareAgaisnt) ) {
-            return array_values( array_diff( $compareFrom, $compareAgaisnt ) );
-        }
-        return null;
+        return array_values( array_diff( $compareFrom, $compareAgaisnt ) );
     }
 
 
-    public function getDistance($place1, $place2)
+    public function getDistance(array $place1, array $place2)
     {
         // a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
         $φ1 = deg2rad($place1['lat']);
@@ -80,13 +69,13 @@ class Interview {
     }
 
 
-    public function getHumanTimeDiff( $time1, $time2 )
+    public function getHumanTimeDiff(string $time1, string $time2 )
     {
         $date_time1 = new \DateTime($time1);
         $date_time2 = new \DateTime($time2);
         $timeDiff = $date_time1->diff($date_time2);
 
-        if ( is_string($time1) && is_string($time2) && !empty($time1) && !empty($time2) ) {
+        if ( !empty($time1) && !empty($time2) ) {
 
             $timeDiff = $date_time1->diff($date_time2);
 
