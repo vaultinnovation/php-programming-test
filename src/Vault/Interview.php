@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author: Brice Djilo
+ * Interview
+ */
+
+
 
 /**
  * Instructions:
@@ -9,9 +15,22 @@
 
 namespace Vault\Vault;
 
-
+/**
+ * This class is use to run tests in tests/InterviewTests.php
+ */
 class Interview {
 
+    /**
+     * [ reverseArray:
+     *      This method transforms the received string $string
+     *      into an array of the words.
+     *      The returned array contains words in their reverse order.
+     *      Non-alphanumeric characters are ignored.
+     * ]
+     * @param  string $string [a string]
+     * @return array          [Array containing the words of $string arranged in the reverse order
+     *                          If $string is empty, an empty array is returned.]
+     */
     public function reverseArray(string $string)
     {
         $result = preg_replace(
@@ -23,6 +42,14 @@ class Interview {
     }
 
 
+    /**
+     * [ orderArray
+     *      expects an array of integers, floats, doubles or a combination.
+     *      It returns an array of the received numbers sorted in ascending order.
+     * ]
+     * @param  array  $array [Array of integers, floats, doubles, or a combination of the these.]
+     * @return array        [An array of numbers in ascending order.]
+     */
     public function orderArray(array $array)
     {
         $temp = [];
@@ -41,12 +68,29 @@ class Interview {
         return $array;
     }
 
+    /**
+     * [ getDiffArray
+     *      compares $compareFrom against $compareAgaisnt and returns the values
+     *      in $compareFrom that are not present in $compareAgaisnt.
+ *      ]
+     * @param  array  $compareFrom    [An array of numbers to compare from]
+     * @param  array  $compareAgaisnt [An array of numbers to compare against]
+     * @return array                 [Returns an array containing all the entries from $compareFrom
+ *                                    that are not present in $compareAgaisnt.]
+     */
     public function getDiffArray(array $compareFrom, array $compareAgaisnt)
     {
         return array_values( array_diff( $compareFrom, $compareAgaisnt ) );
     }
 
-
+    /**
+     * [getDistance
+     *      computes the distance between two points of the globe.
+     *      The points are characterized by their latitude and longitude coordinates.]
+     * @param  array  $place1 [First point: an associative array of longitude and latitude.]
+     * @param  array  $place2 [Second point: an associative array of longitude and latitude.]
+     * @return double         [The distance, in miles, between $place1 and $place2]
+     */
     public function getDistance(array $place1, array $place2)
     {
         // a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
@@ -68,8 +112,16 @@ class Interview {
         return number_format( $d, 2 );
     }
 
-
-    public function getHumanTimeDiff(string $time1, string $time2 )
+    /**
+     * [getHumanTimeDiff
+     *      Receives two strings in the date-time format (e.g. "2016-06-05T15:00:00"),
+     *      computes the difference between them and prints it out as Y hours ago.
+     * ]
+     * @param  string $time1 [A non empty string representing time e.g. "2016-06-05T15:00:00"]
+     * @param  string $time2 [A non emptystring representing time e.g "2016-06-05T15:00:00"]
+     * @return string        [The difference between $time1 and $time2 printed as Y hours ago.]
+     */
+    public function getHumanTimeDiff(string $time1, string $time2)
     {
         $date_time1 = new \DateTime($time1);
         $date_time2 = new \DateTime($time2);
