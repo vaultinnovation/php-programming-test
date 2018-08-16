@@ -30,12 +30,19 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     /**
      * Create a class that sorts the below array
      */
-
+    //Class not needed.
     public function testOrderArray()
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
+        // Code here
 
+        asort($data);
+
+        $arrlength = count($data);
+        for($x = 0; $x < $arrlength; $x++) {
+            return $data[$x];
+        }
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
