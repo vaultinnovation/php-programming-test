@@ -82,6 +82,9 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
 
         // Code here
 
+        $interview = new Interview($place1, $place2);
+        $distance = $interview->getDistance($place1, $place2);
+
         $this->assertEquals(36.91, $distance);
     }
 
