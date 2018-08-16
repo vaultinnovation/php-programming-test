@@ -16,7 +16,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
 
     public function testReverseArray()
     {
-        $data = "I want this job";
+        $data = "I want this job.";
 
         // Code here
 
@@ -80,8 +80,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
      */
     public function testGetHumanTimeDiff()
     {
-        $time1 = "2015-06-05T12:00:00";
-        $time2 = "2015-06-05T15:00:00";
+        $time1 = "2016-06-05T12:00:00";
+        $time2 = "2016-06-05T15:00:00";
 
         // Code here
 
