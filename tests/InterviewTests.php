@@ -7,28 +7,41 @@
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
 
+require('src/Vault/Interview.php');
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
     /**
      * Create a class that turns the below string into an array and reverse the words.
      */
+
     public function testReverseArray()
     {
         $data = "I want this job.";
 
         // Code here
 
+        $interview = new Interview($data);
+        $data = $interview->reverseArray($data);
+
+
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
 
     /**
-     * Create a class that sorts the below array
+     * Create a class that sorts the below array -- Class not needed to complete test
      */
     public function testOrderArray()
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+
+        asort($data);
+
+        $arrlength = count($data);
+        for($x = 0; $x < $arrlength; $x++) {
+            return $data[$x];
+        }
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -47,10 +60,14 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+        $interview = new Interview($data2, $data1);
+        $data = $interview->getDiffArray($data2, $data1);
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
+        $interview = new Interview($data1, $data2);
+        $data = $interview->getDiffArray($data1, $data2);
 
         $this->assertEquals([1, 3, 6], $data);
     }
@@ -65,6 +82,9 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
 
         // Code here
 
+        $interview = new Interview($place1, $place2);
+        $distance = $interview->getDistance($place1, $place2);
+
         $this->assertEquals(36.91, $distance);
     }
 
@@ -77,8 +97,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
+        $interview = new Interview($time1, $time2);
+        $timeDiff = $interview->getHumanTimeDiff($time1, $time2);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
+
+
 
 }
