@@ -7,16 +7,22 @@
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
 
+require('src/Vault/Interview.php');
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
     /**
      * Create a class that turns the below string into an array and reverse the words.
      */
+
     public function testReverseArray()
     {
-        $data = "I want this job.";
+        $data = "I want this job";
 
         // Code here
+
+        $interview = new Interview($data);
+        $data = $interview->reverseArray($data);
+
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -24,11 +30,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     /**
      * Create a class that sorts the below array
      */
+
     public function testOrderArray()
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
-        // Code here
+
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -73,12 +80,14 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
      */
     public function testGetHumanTimeDiff()
     {
-        $time1 = "2016-06-05T12:00:00";
-        $time2 = "2016-06-05T15:00:00";
+        $time1 = "2015-06-05T12:00:00";
+        $time2 = "2015-06-05T15:00:00";
 
         // Code here
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
+
+
 
 }
