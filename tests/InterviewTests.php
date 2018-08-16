@@ -28,9 +28,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     }
 
     /**
-     * Create a class that sorts the below array
+     * Create a class that sorts the below array -- Class not needed to complete test
      */
-    //Class not needed.
     public function testOrderArray()
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
@@ -61,10 +60,14 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+        $interview = new Interview($data2, $data1);
+        $data = $interview->getDiffArray($data2, $data1);
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
+        $interview = new Interview($data1, $data2);
+        $data = $interview->getDiffArray($data1, $data2);
 
         $this->assertEquals([1, 3, 6], $data);
     }
