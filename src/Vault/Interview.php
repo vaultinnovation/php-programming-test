@@ -20,7 +20,6 @@ class Interview
 
     public function orderArray($data)
     {
-
         asort($data);
 
         $arrlength = count($data);
@@ -29,6 +28,16 @@ class Interview
         }
     }
 
+    public function getDiffArray($data1, $data2)
+    {
 
+        $result = array_diff($data1, $data2);
+
+        $array = (array_values($result)); 
+
+
+        return $array;
+
+    }
 
 }
