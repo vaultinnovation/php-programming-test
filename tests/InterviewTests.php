@@ -7,6 +7,11 @@
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
 
+
+// Import namespace
+use Vault\Interview;
+
+
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
     /**
