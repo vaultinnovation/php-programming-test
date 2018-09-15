@@ -33,10 +33,33 @@ class Interview
         
         // Explode input string into an array of strings on boundaries formed by the "space" delimiter.
         $wordsArray = explode(" ", $sentance);
-
+        
         // Reverse array element order and return the result.
         return array_reverse($wordsArray);
     }
     
-
+    
+    /**
+     * getArrayDifference
+     * 
+     * Gets the values in array1 that are not present in array2 and 
+     * indexs the array values numerically before returning the result.
+     * 
+     * @param array $data1  The array to compare from.
+     * @param array $data2  An array to compare against.
+     *
+     * @return array  Numerically indexed array of values in array1 that are not present in array2.
+     *
+     * @access public
+     */
+    public function getArrayDifference($array1, $array2)
+    {
+        // Get values in array1 that are not present in array2.
+        $arrayDiff = array_diff($array1, $array2);
+        
+        // Index the array values numerically and return the result.
+        return array_values($arrayDiff);
+    }
+    
+    
 }
