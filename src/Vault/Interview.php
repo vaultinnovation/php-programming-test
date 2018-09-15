@@ -62,4 +62,42 @@ class Interview
     }
     
     
+    /**
+     * getDistance
+     * 
+     * Calculates the great-circle distance between two points, with the Haversine formula.
+     * Original formula by Martin Stoeckli https://www.martinstoeckli.ch/php/php.html#great_circle_dist
+     * 
+     * @param float $latFrom Latitude of start point in [deg decimal].
+	 * @param float $lonFrom Longitude of start point in [deg decimal].
+	 * @param float $latTo Latitude of target point in [deg decimal].
+	 * @param float $lonTo Longitude of target point in [deg decimal].
+	 * @param integer $precision Optional number of decimal digits to round to. Default two decimal places.
+	 * @param float $earthRadius Mean earth radius. Earth radius unit determines output unit. Default in miles.
+	 * 
+     * @return float Distance between points. Default in miles. (Same unit as earthRadius.)
+     *
+     * @access public
+     */
+    public function getDistance($latFrom, $lonFrom, $latTo, $lonTo, $precision = 2, $earthRadius = 3959)
+    {	
+        // Convert lat/lon degrees to radians
+        $latFrom = deg2rad($latFrom);
+        $lonFrom = deg2rad($lonFrom);
+        $latTo = deg2rad($latTo);
+        $lonTo = deg2rad($lonTo);
+
+		// Calculate lat/lon deltas
+        $latDelta = $latTo - $latFrom;
+        $lonDelta = $lonTo - $lonFrom;
+
+		// Calculate angles of spherical triangle
+        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+          cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+		
+		// Calculate distance with anlge and sphere radius then return (rounded) result.
+        return round($angle * $earthRadius, $precision);
+    }
+    
+    
 }

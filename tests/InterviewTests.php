@@ -72,7 +72,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place1 = ['lat' => '41.9641684', 'lon' => '-87.6859726'];
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
-        // Code here
+        $distance = Interview::getDistance($place1['lat'], $place1['lon'], $place2['lat'], $place2['lon']);
 
         $this->assertEquals(36.91, $distance);
     }
