@@ -8,8 +8,9 @@
  */
 
 
-// Import namespace
+// Imports
 use Vault\Interview;
+use Carbon\Carbon;
 
 
 class InterviewTests extends PHPUnit\Framework\TestCase {
@@ -79,13 +80,14 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
 
     /**
      * Create a class that will generate a human readable time difference
+     * !! Class not needed to assert test - Using 3rd party package [Carbon] !!
      */
     public function testGetHumanTimeDiff()
     {
         $time1 = "2016-06-05T12:00:00";
         $time2 = "2016-06-05T15:00:00";
 
-        // Code here
+        return Carbon::parse($time1)->diffForHumans($time2);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
