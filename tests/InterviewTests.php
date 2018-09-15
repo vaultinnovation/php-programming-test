@@ -21,7 +21,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data = "I want this job.";
 
-        // Code here
+        $data = Interview::explodeReverseSentance($data, " \.");
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
