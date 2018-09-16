@@ -39,6 +39,38 @@ class Interview
     }
     
     
+	/**
+     * castSortArray
+     * 
+     * Set each array value to the proper type and sort the values numerically.
+     * 
+     * @param array $array  The array of strings to cast and sort.
+     *
+     * @return array  Numerically indexed array of sorted values wiht proper types.
+     *
+     * @access public
+     */
+    public function castSortArray($array)
+    {
+
+		// Loop through each array value
+		for( $i = 0; $i < count( $array ); $i++ )
+		{
+			// If there is a . assume float type, otherwise assume integer
+			if (strpos($array[$i], '.')) {
+			    settype($array[$i], "float");
+			} else {
+				settype($array[$i], "integer");
+			}
+		}
+		
+		// Sort the array numericly
+        sort($array, SORT_NUMERIC);
+
+        return $array;
+    }
+    
+    
     /**
      * getArrayDifference
      * 

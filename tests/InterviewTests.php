@@ -35,10 +35,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
-		// Sort array numericly and do not change type
-        sort($data, SORT_NUMERIC | SORT_REGULAR);
-		// Return all indices in order
-		for($i = 0 ; $i < count($data) ; $i++) return $data[$i];
+		$data = Interview::castSortArray($data);
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
