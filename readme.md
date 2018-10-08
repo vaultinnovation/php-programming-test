@@ -1,6 +1,6 @@
-# Vault Innovation PHP Interview Test
+# PHP Interview Test
 
-Thanks for applying at Vault!
+Thanks for applying!
 
 The tests in this exercise shouldn't take more than a hour or so to complete.
 
