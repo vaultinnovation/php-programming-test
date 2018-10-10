@@ -7,6 +7,8 @@
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
 
+use Vault\Vault\Interview;
+
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
     /**
@@ -17,6 +19,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = "I want this job.";
 
         // Code here
+        (new Interview())->reverseArray($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -29,6 +32,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
+        (new Interview())->orderArray($data);
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -47,10 +51,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
         // Code here
+        $data = (new Interview())->getDiffArray($data2, $data1);
 
         $this->assertEquals([8, 9, 10], $data);
 
         // Code here
+        $data = (new Interview())->getDiffArray($data1, $data2);
 
         $this->assertEquals([1, 3, 6], $data);
     }
@@ -64,6 +70,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
+        $distance = (new Interview())->getDistance($place1, $place2);
 
         $this->assertEquals(36.91, $distance);
     }
@@ -77,6 +84,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
+        $timeDiff = (new Interview())->getHumanTimeDiff($time1, $time2);
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
