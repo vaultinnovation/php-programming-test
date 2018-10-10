@@ -5,7 +5,9 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "anthonymartin/geo-location": "^1.0",
+        "nesbot/carbon": "^2.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~5.4"
