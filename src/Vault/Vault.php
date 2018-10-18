@@ -63,8 +63,20 @@ class Vault
     }
 
     public function getDistanceGeoLocation($location1, $location2){
-        $distance = 0;
-        return $distance;
+        $earthRad = 6371;
+
+        $del1 = deg2rad(floatval($location1['lat']));
+        $del2 = deg2rad(floatval($location2['lat']));
+
+        $sumdel = deg2rad(floatval($location2['lat']) - floatval($location1['lat']));
+        $sumlam = deg2rad(floatval($location2['lon']) - floatval($location1['lon']));
+
+        $harvensine = sin($sumdel/2)*sin($sumdel/2) + cos($del1)*cos($del2) * sin($sumlam/2)*sin($sumlam/2);
+        $c = 2*atan2(sqrt($harvensine),sqrt(1-$harvensine));
+
+        $distance = $earthRad*$c;
+
+        return round($distance * 0.6214,2);
     }
 
     public function getTimeDifference($time1, $time2){
