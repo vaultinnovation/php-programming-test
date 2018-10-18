@@ -24,18 +24,52 @@ class Vault
     }
 
     public function sortArray($array){
+        $sortedArray = [];
 
+
+        if(count($array) == 0){
+            return [];
+        }
+        else{
+            foreach($array as $item){
+                $found = strpos($item, '.');
+                if($found) {
+                    array_push($sortedArray, doubleval($item));
+                }
+                else{
+                    array_push($sortedArray, intval($item));
+                }
+
+            }
+
+            sort($sortedArray);
+        }
+        return $sortedArray;
     }
 
-    public function getDifferenceArray($array1, $arrray2){
+    public function getDifferenceArray($array1, $array2){
+        $diffArray = [];
 
+        while(count($array1) !== 0){
+            $value = $array1[0];
+            array_splice($array1, 0,1);
+
+            if(!in_array($value, $array2)){
+                array_push($diffArray, $value);
+            }
+        }
+
+        return $diffArray;
     }
 
     public function getDistanceGeoLocation($location1, $location2){
-
+        $distance = 0;
+        return $distance;
     }
 
     public function getTimeDifference($time1, $time2){
+        $timediff = "";
 
+        return $timediff;
     }
 }
