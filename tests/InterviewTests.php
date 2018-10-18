@@ -1,5 +1,6 @@
 <?php
 
+use src\Vault\Vault;
 /**
  * Instructions:
  *
@@ -17,6 +18,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = "I want this job.";
 
         // Code here
+       
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }

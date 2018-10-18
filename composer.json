@@ -13,7 +13,10 @@
     "autoload": {
         "psr-4": {
             "Vault\\": "src/"
-        }
+        },
+        "classmap": [
+            "src/Vault"
+        ]
     },
     "autoload-dev": {
         "classmap": [
