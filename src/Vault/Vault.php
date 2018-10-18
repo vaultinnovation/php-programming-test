@@ -68,8 +68,12 @@ class Vault
     }
 
     public function getTimeDifference($time1, $time2){
-        $timediff = "";
+        $beginningTime = new \DateTime($time1);
+        $endTime = new \DateTime($time2);
 
-        return $timediff;
+        $timediff = $endTime->diff($beginningTime);
+
+
+        return $timediff->h." hours ago";
     }
 }

@@ -87,6 +87,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         // Code here
         $object = new Vault;
         $timeDiff = $object->getTimeDifference($time1, $time2);
+        
         $this->assertEquals("3 hours ago", $timeDiff);
     }
 
