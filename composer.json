@@ -17,7 +17,8 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/InterviewTests.php"
+            "tests/InterviewTests.php",
+            "src/Vault/Helper.php"
         ]
     },
     "scripts": {
