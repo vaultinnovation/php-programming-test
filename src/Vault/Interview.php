@@ -4,6 +4,9 @@ namespace Vault\Vault;
 /**
  * Class in the Vault namespace for Interview tests.
  */
+ use Location\Coordinate;
+ use Location\Distance\Vincenty;
+ use Location\Distance\Haversine;
 
 class Interview {
 
@@ -70,5 +73,32 @@ class Interview {
         }
 
         return $result;
+    }
+
+    /**
+     * Input: two tuple arrays each with a lat and lon key
+     * Output: mile distance between the two locations
+     */
+    public static function getDistance(array $place1, array $place2)
+    {
+        $coordinate1 = new Coordinate($place1['lat'], $place1['lon']); 
+        $coordinate2 = new Coordinate($place2['lat'], $place2['lon']); 
+
+        // Vicenty calculation, assuming the earth is an oblate
+        //     spheroid and far more accurate.
+        // $calculator = new Vincenty();
+
+        $calculator = new Haversine();
+
+        // retrieve meter difference between coordinates
+        $distance = $calculator->getDistance($coordinate1, $coordinate2);
+
+        $distance = self::kilometerToMile($distance / 1000.0);
+
+        return $distance;
+    }
+
+    public static function kilometerToMile($kilometers) {
+        return $kilometers * 0.621371;
     }
 }

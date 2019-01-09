@@ -11,3 +11,6 @@ Please make the tests in `tests\InterviewTests.php` all pass. To get started, fo
 Create a class in the Vault namespace and rewrite each test to make the assertions pass. If you do not need a class to complete the tests, make a note in the comments above the test. 
 
 NOTE: You can use any third party packages you deem necessary to complete the tests. 
+
+### Third Party Licenses
+TODO: MIT License Docs for composer require mjaschen/phpgeo
