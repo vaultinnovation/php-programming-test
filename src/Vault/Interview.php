@@ -59,7 +59,7 @@ class Interview {
      * Input: two arrays
      * Output: The values in array 1 missing from array 2
      */
-    public static function getDiffArray(array $array1, $array2)
+    public static function getDiffArray(array $array1, array $array2)
     {
         $result = array();
 
