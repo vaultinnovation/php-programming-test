@@ -8,6 +8,8 @@ namespace Vault\Vault;
  use Location\Distance\Vincenty;
  use Location\Distance\Haversine;
 
+ use Jenssegers\Date\Date;
+
 class Interview {
 
     /**
@@ -98,7 +100,22 @@ class Interview {
         return $distance;
     }
 
+    /**
+     * Input: number in kilometers
+     * Output: mile distance
+     */
     public static function kilometerToMile($kilometers) {
         return $kilometers * 0.621371;
+    }
+
+    /**
+     * Input: 2 UTC Format Strings EX. 2016-06-05T12:00:00
+     * Output: humanized string based on diff between the two times
+     */
+    public static function getHumanTimeDiff($time1, $time2) {
+        $date1 = new Date($time1);
+        $date2 = new Date($time2);
+
+        return $date2->timespan($date1) . ' ago';
     }
 }
