@@ -13,4 +13,5 @@ Create a class in the Vault namespace and rewrite each test to make the assertio
 NOTE: You can use any third party packages you deem necessary to complete the tests. 
 
 ### Third Party Licenses
-TODO: MIT License Docs for composer require mjaschen/phpgeo
+MIT License Docs for composer require mjaschen/phpgeo
+MIT License Docs for composer require jenssegers/date
