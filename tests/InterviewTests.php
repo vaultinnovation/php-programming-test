@@ -47,11 +47,11 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data1 = [1, 2, 3, 4, 5, 6, 7];
         $data2 = [2, 4, 5, 7, 8, 9, 10];
 
-        // Code here
+        $data = Interview::getDiffArray($data1, $data2);
 
         $this->assertEquals([8, 9, 10], $data);
 
-        // Code here
+        $data = Interview::getDiffArray($data2, $data1);
 
         $this->assertEquals([1, 3, 6], $data);
     }
