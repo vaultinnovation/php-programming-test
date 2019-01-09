@@ -67,7 +67,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $distance = Interview::getDistance($place1, $place2);
         $distance = round($distance, 2, PHP_ROUND_HALF_ODD);
 
-        $this->assertEquals(36.91, $distance);
+        $this->assertEquals(36.90, $distance);
     }
 
     /**
