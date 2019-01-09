@@ -6,6 +6,7 @@
  * Create a class in the Vault namespace and rewrite each test to make the assertions pass.
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
+use Vault\Vault\Interview;
 
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
@@ -16,7 +17,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data = "I want this job.";
 
-        // Code here
+        $data = Interview::stringToWordArray($data, TRUE);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
