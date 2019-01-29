@@ -20,7 +20,6 @@ class InterviewTests extends TestCase {
   public function testReverseArray()
   {
     $data = "I want this job.";
-
     $data = ArrayTester::reverseArray($data);
 
     $this->assertEquals(['job', 'this', 'want', 'I'], $data);

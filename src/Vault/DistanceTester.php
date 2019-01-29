@@ -11,6 +11,8 @@ namespace Vault;
  *
  * This function modifies the provided value when it is called and returns true if the conversion was successful, false if unsuccessful.
  *
+ * @param mixed $input An input value to be checked to see if it is numeric.
+ * @return bool
  */
 function numericToFloat(&$input){
   if(is_numeric($input)){
@@ -29,6 +31,13 @@ class DistanceTester
    *
    * I don't normally code my if() statements on multiple lines or indentation levels, but did so in this function for verbosity.
    *
+   * @param array $place1 Associative array with two key => value pairs.
+   *                      The key "lat" should be a float, integer or string with a value between -90 and 90 representing a latitude point.
+   *                      The key "lon" should be a float, integer or string with a value between -180 and 180 representing a longitude point.
+   * @param array $place2 Associative array with two key => value pairs.
+   *                      The key "lat" should be a float, integer or string with a value between -90 and 90 representing a latitude point.
+   *                      The key "lon" should be a float, integer or string with a value between -180 and 180 representing a longitude point.
+   * @return float|bool Returns a float value on success, false on fail.
    */
   public function getDistance($place1,$place2){
     if(

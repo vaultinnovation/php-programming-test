@@ -6,8 +6,15 @@ I passed all of the tests as provided, but there are a few things that I want to
 - Overall
   - Comment functions to explain methodology.
 - ArrayTester.php
-  - ...
+  - reverseArray()
+    - Add check for strings that are arrays cast as string.
+  - orderArrayComplex()
+    - Create new function for complex ordering of arrays.
 - DistanceTester.php
-  - ...
+  - getDistanceComplex()
+    - Create new function for complex distance calculations.
 - DateTimeTester.php
-  - ...
+  - getHumanTimeDiff()
+    - Modify function to compare two distinct date/time values not relative to the current date/time.
+  - getHumanTimeDiffFromNow()
+    - Create new function to compare a given date/time to the current date/time.
