@@ -60,10 +60,6 @@ class InterviewTests extends TestCase {
   /**
    * Create a class that will get the distance between two geo points
    *
-   * The 36.91 value is returned when using miles to calculate via Haversine Formula, but when using km->mi, the value is off a bit.
-   * Using a smaller unit of measurement and calculating larger units would be a more accurate measurement.
-   * The provided lat/lon values have 7 degrees of precision (decimals) which makes them accurate to millimeters as detailed here: https://en.wikipedia.org/wiki/Decimal_degrees
-   * Once I pass all tests I'm going to return to this and rewrite a more complex tester function.
    */
   public function testGetDistance()
   {
@@ -73,6 +69,37 @@ class InterviewTests extends TestCase {
     $distance = DistanceTester::getDistance($place1,$place2);
 
     $this->assertEquals(36.91, $distance);
+  }
+
+  /**
+   * Create a class that will get the distance between two geo points
+   *
+   * The 36.91 value returned when using miles to calculate via Haversine Formula above is not as accurate as possible.
+   * Using a smaller unit of measurement and calculating larger units is a more accurate measurement.
+   * The new getDistanceComplex() method of the DistanceTester should be more accurate.
+   */
+  public function testGetDistanceComplex()
+  {
+    $place1 = ['lat' => '41.9641684', 'lon' => '-87.6859726'];
+    $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
+
+    $distance = DistanceTester::getDistanceComplex($place1,$place2);
+    $this->assertEquals(36.9035507441607, $distance);
+
+    $distance = DistanceTester::getDistanceComplex($place1,$place2,'km');
+    $this->assertEquals(59.39050796881055, $distance);
+
+    $distance = DistanceTester::getDistanceComplex($place1,$place2,null,'3');
+    $this->assertEquals(36.904, $distance);
+
+    $distance = DistanceTester::getDistanceComplex($place1,$place2,'km',3);
+    $this->assertEquals(59.391, $distance);
+
+    $distance = DistanceTester::getDistanceComplex($place1,$place2,'km',3,PHP_ROUND_HALF_DOWN);
+    $this->assertEquals(59.390, $distance);
+
+    $distance = DistanceTester::getDistanceComplex($place1,$place2,'yards',5);
+    $this->assertEquals(64950.24931, $distance);
   }
 
   /**

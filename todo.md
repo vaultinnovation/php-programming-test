@@ -6,9 +6,3 @@ I passed all of the tests as provided, but there are a few things that I want to
 - ArrayTester.php
   - orderArrayComplex()
     - Create new function for complex ordering of arrays.
-- DistanceTester.php
-  - getDistanceComplex()
-    - Create new function for complex distance calculations.
-- DateTimeTester.php
-  - getHumanTimeDiffFromNow()
-    - Create new function to compare a given date/time to the current date/time.
