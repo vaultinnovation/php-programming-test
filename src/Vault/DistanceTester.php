@@ -15,7 +15,9 @@ namespace Vault;
  * @return bool
  */
 function numericToFloat(&$input){
+  // Check that $input is numeric.
   if(is_numeric($input)){
+    // Cast $input to float and return it.
     $input = (float)$input;
     return true;
   }
@@ -40,6 +42,12 @@ class DistanceTester
    * @return float|bool Returns a float value on success, false on fail.
    */
   public function getDistance($place1,$place2){
+    // Check that all conditions match:
+    // $place1 and $place2 are arrays.
+    // $place1 and $place2 have properties named "lat" and "lon".
+    // The "lat" and "lon" properies of $place1 and $place2 pass the numericToFloat() function (this function casts the values to float in the process).
+    // The "lat" values for $place1 and $place2 are between -90 and 90.
+    // // The "lon" values for $place1 and $place2 are between -180 and 180.
     if(
       (
         gettype($place1) === 'array'
@@ -72,12 +80,15 @@ class DistanceTester
         )
       )
     ){
+      // Define the radius of the earth in miles.
       $earth_radius = 3959;
+      // Calculate distance in miles between $place1 and $place2 using the Haversine Formula.
       $dLat = deg2rad($place2['lat'] - $place1['lat']);
       $dLon = deg2rad($place2['lon'] - $place1['lon']);
       $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($place1['lat'])) * cos(deg2rad($place2['lat'])) * sin($dLon/2) * sin($dLon/2);
       $c = 2 * asin(sqrt($a));
       $dist = $earth_radius * $c;
+      // Round $dist to a precision of two decimal places and return it.
       $dist = round($dist,2);
       return $dist;
     }
