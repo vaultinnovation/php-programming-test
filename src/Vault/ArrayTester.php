@@ -46,4 +46,18 @@ class ArrayTester
     }
     return false;
   }
+
+  /**
+   * Calculates and returns the difference between two provided arrays.
+   *
+   * This function is simple and the test could be solved without defining a new function, but I'm defining it within the ArrayTester class for consistency's sake.
+   *
+   */
+  public function getDiffArray($array1,$array2){
+    if(gettype($array1) === 'array' && gettype($array2) === 'array'){
+      $diff = array_values(array_diff($array1,$array2));
+      return $diff;
+    }
+    return false;
+  }
 }
