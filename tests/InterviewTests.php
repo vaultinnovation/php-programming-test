@@ -20,7 +20,9 @@ class InterviewTests extends TestCase {
   public function testReverseArray()
   {
     $data = "I want this job.";
+
     $data = ArrayTester::reverseArray($data);
+
     $this->assertEquals(['job', 'this', 'want', 'I'], $data);
   }
 
@@ -30,7 +32,9 @@ class InterviewTests extends TestCase {
   public function testOrderArray()
   {
     $data = ["200", "450", "2.5", "1", "505.5", "2"];
+
     $data = ArrayTester::orderArray($data);
+
     $this->assertTrue(1 === $data[0]);
     $this->assertTrue(2 === $data[1]);
     $this->assertTrue(2.5 === $data[2]);
@@ -55,13 +59,18 @@ class InterviewTests extends TestCase {
 
   /**
    * Create a class that will get the distance between two geo points
+   *
+   * The 36.91 value is returned when using miles to calculate via Haversine Formula, but when using km->mi, the value is off a bit.
+   * Using a smaller unit of measurement and calculating larger units would be a more accurate measurement.
+   * The provided lat/lon values have 7 degrees of precision (decimals) which makes them accurate to millimeters as detailed here: https://en.wikipedia.org/wiki/Decimal_degrees
+   * Once I pass all tests I'm going to return to this and rewrite a more complex tester function.
    */
   public function testGetDistance()
   {
     $place1 = ['lat' => '41.9641684', 'lon' => '-87.6859726'];
     $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
-    // Code here
+    $distance = DistanceTester::getDistance($place1,$place2);
 
     $this->assertEquals(36.91, $distance);
   }
