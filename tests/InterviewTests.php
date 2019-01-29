@@ -30,9 +30,7 @@ class InterviewTests extends TestCase {
   public function testOrderArray()
   {
     $data = ["200", "450", "2.5", "1", "505.5", "2"];
-
-    // Code here
-
+    $data = ArrayTester::orderArray($data);
     $this->assertTrue(1 === $data[0]);
     $this->assertTrue(2 === $data[1]);
     $this->assertTrue(2.5 === $data[2]);
