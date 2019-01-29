@@ -77,13 +77,17 @@ class InterviewTests extends TestCase {
 
   /**
    * Create a class that will generate a human readable time difference
+   *
+   * The "3 hours ago" value is misleading, since that block of time is not "X UNITS ago" but an unchanging measurement of time between two defined points in time.
+   * I'm leaving it as-is for the sake of passing the test, but I'd like to modify the function to return the appropriate value without the "ago".
+   *
    */
   public function testGetHumanTimeDiff()
   {
     $time1 = "2016-06-05T12:00:00";
     $time2 = "2016-06-05T15:00:00";
 
-    // Code here
+    $timeDiff = DateTimeTester::getHumanTimeDiff($time2,$time1);
 
     $this->assertEquals("3 hours ago", $timeDiff);
   }

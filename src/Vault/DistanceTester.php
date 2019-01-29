@@ -3,16 +3,6 @@
 namespace Vault;
 
 /**
- *
- *
- * =====================
- * COME BACK AND COMMENT
- * =====================
- *
- *
- */
-
-/**
  * DEFINE NON-CLASS HELPER FUNCTIONS
  */
 
