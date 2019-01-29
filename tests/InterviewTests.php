@@ -43,6 +43,34 @@ class InterviewTests extends TestCase {
   }
 
   /**
+   * Create a class that sorts the below array
+   *
+   * The testOrderArrayComplex() method allows for more flexible definitions when defining how to sort arrays.
+   *
+   * I duplicated the original test above by passing along the sort function and map function used in the original testOrderArray() funtion explicitly.
+   */
+  public function testOrderArrayComplex()
+  {
+    $data = ['200', '450', '2.5', '1', '505.5', '2'];
+
+    $data1 = ArrayTester::orderArrayComplex($data,'sort',function($x){
+      if(is_numeric($x)){
+        if(is_float($x + 0)){
+          return (float)$x;
+        }
+        elseif(is_int($x + 0)){
+          return (int)$x;
+        }
+      }
+      return $x;
+    });
+    $this->assertSame([1, 2, 2.5, 200, 450, 505.5],$data1);
+
+    $data2 = ArrayTester::orderArrayComplex($data,'rsort');
+    $this->assertSame(['505.5', '450', '200', '2.5', '2', '1'],$data2);
+  }
+
+  /**
    * Create a class to determine array differences
    */
   public function testGetDiffArray()

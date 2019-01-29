@@ -70,6 +70,90 @@ class ArrayTester
   }
 
   /**
+   * Orders provided array from smallest value to largest value and casts array items to numerical values.
+   *
+   * I don't normally code my if() statements on multiple lines or indentation levels, but did so in this function for verbosity.
+   *
+   * @param array $array The array to be ordered.
+   * @param string|array $custom_sort Optional parameter that can can accept either a string or array.
+   *                                  If $custom_sort is a string, it must be the function name of a simple PHP-standard sorting function that does not need extra parameters to run (ex. "sort", "rsort", etc.).
+   *                                  If $custom_sort is an array, $custom_sort[0] must be the function name of a PHP-standard sorting function (ex. "sort", "usort", etc.). $custom_sort[1] can be either a flag (integer) or anonymous function. orderArrayComplex() will determine which to look for based on the sort function referenced in $custom_sort[0].
+   * @param object $custom_map Optional object parameter that must be a callable anonymous function to be passsed as the callback function in array_map() as defined here: http://php.net/manual/en/function.array-map.php
+   * @return array|bool Returns ordered array on success, false on fail.
+   */
+  public function orderArrayComplex($array,$custom_sort = null, $custom_map = null){
+    // Check if $array is an array.
+    if(gettype($array) === 'array'){
+      // Check if $custom_map is not empty and is a callable function.
+      if(!empty($custom_map) && is_callable($custom_map)){
+        // Map $array by calling $custom_map function on $array.
+        $array = array_map($custom_map,$array);
+      }
+      // Define valid sort functions as keys.
+      // Define valid sort function types as arrays in associated values.
+      $sort_options = [
+        'asort' => ['simple','flags'],
+        'arsort' => ['simple','flags'],
+        'ksort' => ['simple','flags'],
+        'krsort' => ['simple','flags'],
+        'natsort' => ['simple'],
+        'natcasesort' => ['simple'],
+        'rsort' => ['simple','flags'],
+        'shuffle' => ['simple'],
+        'sort' => ['simple','flags'],
+        'usort' => ['user'],
+        'uasort' => ['user'],
+        'uksort' => ['user']
+      ];
+      // Check if $custom_sort is not empty, is a string, is an accepted sort function, and can be run without flags or user-defined functions (type: "simple").
+      // OR
+      // $custom_sort is an array that has only one item and that one item is a string, an accepted sort function and can be run without flags or user-defined functions (type: "simple").
+      if(
+        !empty($custom_sort)
+        && (
+          gettype($custom_sort) === 'string'
+          && array_key_exists(strtolower($custom_sort),$sort_options)
+          && in_array('simple',$sort_options[strtolower($custom_sort)])
+        )
+        || (
+          gettype($custom_sort) === 'array'
+          && count($custom_sort) === 1
+          && gettype($custom_sort[0]) === 'string'
+          && array_key_exists(strtolower($custom_sort[0]),$sort_options)
+          && in_array('simple',$sort_options[strtolower($custom_sort[0])])
+        )
+      ){
+        // Sort $array by calling $custom_sort function on $array.
+        $custom_sort($array);
+      }
+      // ELSE Check if $custom_sort is not empty, is an array, has at least two items (only the first two are used), and the first array item is a string, an accepted sort function and can be can be run with flags as long as the second array item is a valid flag (integer) OR can be run with user-defined functions as long as the second array item is a callable function.
+      elseif(
+        !empty($custom_sort)
+        && gettype($custom_sort) === 'array'
+        && count($custom_sort) > 1
+        && gettype($custom_sort[0]) === 'string'
+        && array_key_exists(strtolower($custom_sort[0]),$sort_options)
+        && (
+            (
+              in_array('flags',$sort_options[strtolower($custom_sort[0])])
+              && gettype($custom_sort[1]) === 'integer'
+            )
+            || (
+              in_array('user',$sort_options[strtolower($custom_sort[0])])
+              && is_callable($custom_sort[1])
+            )
+        )
+      ){
+        // Sort $array by calling $custom_sort[0] function on $array with custom parameters $custom_sort[1].
+        $custom_sort[0]($array,$custom_sort[1]);
+      }
+      // Return mapped & sorted array.
+      return $array;
+    }
+    return false;
+  }
+
+  /**
    * Calculates and returns the difference between two provided arrays.
    *
    * This function is simple and the test could be solved without defining a new function, but I'm defining it within the ArrayTester class for consistency's sake.
