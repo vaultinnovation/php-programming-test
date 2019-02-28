@@ -7,6 +7,11 @@
  * NOTE: You can use any third party packages you deem necessary to complete the tests. 
  */
 
+ 
+// include test-taking class
+require_once('src/Vault/TestTaker.php');
+ 
+
 class InterviewTests extends PHPUnit\Framework\TestCase {
 
     /**
@@ -16,7 +21,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data = "I want this job.";
 
-        // Code here
+		$data = \Vault\TestTaker::ReverseArray($data); // take the test!
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -28,7 +33,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
-        // Code here
+		$data = \Vault\TestTaker::OrderArray($data); // take the test!
 
         $this->assertTrue(1 === $data[0]);
         $this->assertTrue(2 === $data[1]);
@@ -45,12 +50,12 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data1 = [1, 2, 3, 4, 5, 6, 7];
         $data2 = [2, 4, 5, 7, 8, 9, 10];
-
-        // Code here
+		
+		$data = \Vault\TestTaker::GetDiffArray($data2, $data1); // take the test!
 
         $this->assertEquals([8, 9, 10], $data);
 
-        // Code here
+		$data = \Vault\TestTaker::GetDiffArray($data1, $data2); // take the test!
 
         $this->assertEquals([1, 3, 6], $data);
     }
@@ -63,7 +68,7 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place1 = ['lat' => '41.9641684', 'lon' => '-87.6859726'];
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
-        // Code here
+		$distance = \Vault\TestTaker::GetDistance($place1, $place2, 2); // take the test!
 
         $this->assertEquals(36.91, $distance);
     }
@@ -75,8 +80,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $time1 = "2016-06-05T12:00:00";
         $time2 = "2016-06-05T15:00:00";
-
-        // Code here
+		
+		$timeDiff = \Vault\TestTaker::GetHumanTimeDiff($time1, $time2, '%h hours ago'); // take a test!
 
         $this->assertEquals("3 hours ago", $timeDiff);
     }
