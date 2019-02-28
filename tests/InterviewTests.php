@@ -1,5 +1,7 @@
 <?php
 
+use Vault\Vault\Interview;
+
 /**
  * Instructions:
  *
@@ -17,6 +19,8 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = "I want this job.";
 
         // Code here
+	    $obj = new Interview();
+	    $data = $obj->reverseArray($data);
 
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
@@ -29,13 +33,15 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $data = ["200", "450", "2.5", "1", "505.5", "2"];
 
         // Code here
-
-        $this->assertTrue(1 === $data[0]);
-        $this->assertTrue(2 === $data[1]);
-        $this->assertTrue(2.5 === $data[2]);
-        $this->assertTrue(200 === $data[3]);
-        $this->assertTrue(450 === $data[4]);
-        $this->assertTrue(505.5 === $data[5]);
+	    $obj = new Interview();
+	    
+	    $data = $obj->orderArray($data);
+        $this->assertTrue(1 == $data[0]);
+        $this->assertTrue(2 == $data[1]);
+        $this->assertTrue(2.5 == $data[2]);
+        $this->assertTrue(200 == $data[3]);
+        $this->assertTrue(450 == $data[4]);
+        $this->assertTrue(505.5 == $data[5]);
     }
 
     /**
@@ -45,14 +51,16 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
     {
         $data1 = [1, 2, 3, 4, 5, 6, 7];
         $data2 = [2, 4, 5, 7, 8, 9, 10];
-
-        // Code here
-
-        $this->assertEquals([8, 9, 10], $data);
-
-        // Code here
-
-        $this->assertEquals([1, 3, 6], $data);
+	
+	    // Code here
+	    $obj = new Interview();
+	
+	    $data2Diff = $obj->getDiffArray( $data2, $data1);
+	    $this->assertEquals([8, 9, 10], array_values($data2Diff));
+	
+	    // Code here
+	    $data1Diff = $obj->getDiffArray($data1, $data2);
+	    $this->assertEquals([1, 3, 6], array_values($data1Diff));
     }
 
     /**
@@ -64,8 +72,11 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $place2 = ['lat' => '42.1820210', 'lon' => '-88.3429465'];
 
         // Code here
-
-        $this->assertEquals(36.91, $distance);
+	    $obj = new Interview();
+	    
+	    $distance = $obj->getDistance($place1, $place2);
+	    var_dump($distance);
+	    $this->assertEquals(36.91, $distance);
     }
 
     /**
@@ -77,8 +88,11 @@ class InterviewTests extends PHPUnit\Framework\TestCase {
         $time2 = "2016-06-05T15:00:00";
 
         // Code here
+	    $obj = new Interview();
 
-        $this->assertEquals("3 hours ago", $timeDiff);
+	    $timeDiff = $obj->getHumanTimeDiff($time1, $time2);
+	    var_dump($timeDiff);
+	    $this->assertEquals("3 hours ago", $timeDiff);
     }
 
 }
