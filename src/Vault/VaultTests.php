@@ -1,5 +1,7 @@
 <?php
 
+namespace src\Vault;
+
 /**
  * Instructions:
  *
@@ -16,7 +18,9 @@ class VaultTests extends PHPUnit\Framework\TestCase {
     {
         $data = "I want this job.";
         
-        // Code here
+        $utility = new \src\Utility;
+     
+        $utility->reverseArray($data);
         
         $this->assertEquals(['job', 'this', 'want', 'I'], $data);
     }
