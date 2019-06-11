@@ -39,11 +39,14 @@ class Utility {
         $lon1 = $place1['lon'];
         $lat2 = $place2['lat'];
         $lon2 = $place2['lon'];
-        $theta = $lon1 - $lon2;
-        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
-        $dist = acos($dist);
         
-        return rad2deg($dist);
+        $theta = $lon1 - $lon2;
+        $miles = (sin(deg2rad($lat1)) * sin(deg2rad($lat2))) + (cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)));
+        $miles = acos($miles);
+        $miles = rad2deg($miles);
+        $miles = $miles * 60 * 1.1515;
+        
+        return $miles;
     }
     
     /**
@@ -52,8 +55,9 @@ class Utility {
     public function getHumanTimeDiff($time1, $time2)
     {
         $timeDiff = abs(strtotime($time2) - strtotime($time1));
+        $timeDiff = $timeDiff / (60 * 60);
         
-        return $timeDiff / (60 * 60);
+        return $timeDiff;
     }
     
 }
