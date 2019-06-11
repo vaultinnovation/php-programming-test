@@ -55,7 +55,7 @@ class Utility {
     public function getHumanTimeDiff($time1, $time2)
     {
         $timeDiff = abs(strtotime($time2) - strtotime($time1));
-        $timeDiff = $timeDiff / (60 * 60);
+        $timeDiff = $timeDiff / (60 * 60) . " hours ago";
         
         return $timeDiff;
     }
