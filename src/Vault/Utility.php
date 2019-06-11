@@ -35,7 +35,15 @@ class Utility {
      */
     public function getDistance($place1, $place2)
     {
-        //
+        $lat1 = $place1['lat'];
+        $lon1 = $place1['lon'];
+        $lat2 = $place2['lat'];
+        $lon2 = $place2['lon'];
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        
+        return rad2deg($dist);
     }
     
     /**
@@ -43,7 +51,9 @@ class Utility {
      */
     public function getHumanTimeDiff($time1, $time2)
     {
-        //
+        $timeDiff = abs(strtotime($time2) - strtotime($time1));
+        
+        return $timeDiff / (60 * 60);
     }
     
 }
